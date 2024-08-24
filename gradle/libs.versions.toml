@@ -22,6 +22,7 @@ liquibase-core = { group = "org.liquibase", name = "liquibase-core" }
 jackson-module-kotlin = { group = "com.fasterxml.jackson.module", name = "jackson-module-kotlin" }
 kotlin-reflect = { group = "org.jetbrains.kotlin", name = "kotlin-reflect" }
 kotlin-logging = { group = "io.github.oshai", name = "kotlin-logging-jvm", version.ref = "kotlin-logging" }
+postgres = { group = "org.postgresql", name = "postgresql" }
 
 assertj = { group = "org.assertj", name = "assertj-core", version.ref = "assertj" }
 instancio = { group = "org.instancio", name = "instancio-junit", version.ref = "instancio" }
@@ -29,6 +30,8 @@ junit-platform-launcher = { group = "org.junit.platform", name = "junit-platform
 kotlin-test-junit5 = { group = "org.jetbrains.kotlin", name = "kotlin-test-junit5" }
 spring-boot-starter-test = { group = "org.springframework.boot", name = "spring-boot-starter-test" }
 spring-security-test = { group = "org.springframework.security", name = "spring-security-test" }
+
+spring-boot-docker-compose = { group = "org.springframework.boot", name = "spring-boot-docker-compose" }
 
 [bundles]
 testing = [

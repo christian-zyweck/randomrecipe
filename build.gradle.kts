@@ -30,11 +30,14 @@ dependencies {
     implementation(libs.kotlin.reflect)
     implementation(libs.liquibase.core)
     implementation(project(":domain"))
+    runtimeOnly(libs.postgres)
 
     testImplementation(libs.spring.boot.starter.test)
     testImplementation(libs.spring.security.test)
     testImplementation(libs.bundles.testing)
     testRuntimeOnly(libs.junit.platform.launcher)
+
+    developmentOnly(libs.spring.boot.docker.compose)
 }
 
 kotlin {

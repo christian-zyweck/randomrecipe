@@ -26,6 +26,18 @@ services:
     depends_on:
      - postgres
 
+  keycloak:
+    image: quay.io/keycloak/keycloak:25.0
+    command: ['start-dev']
+    ports:
+      - "9000:8080"
+    container_name: mealplanner_keycloak
+    environment:
+      KEYCLOAK_ADMIN: admin
+      KEYCLOAK_ADMIN_PASSWORD: password
+    volumes:
+      - keycloak-data:/opt/keycloak/data
 volumes:
   postgres-data:
   pgadmin-data:
+  keycloak-data:

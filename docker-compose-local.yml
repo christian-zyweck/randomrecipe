@@ -1,0 +1,31 @@
+services:
+  postgres:
+    image: postgres
+    ports:
+      - "5432:5432"
+    container_name: mealplanner-postgres
+    restart: always
+    environment:
+      POSTGRES_USERNAME: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: mealplanner
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    ports:
+      - "9090:80"
+    container_name: pgadmin4
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@postgres.de
+      PGADMIN_DEFAULT_PASSWORD: admin
+    volumes:
+      - pgadmin-data:/var/lib/pgadmin
+    depends_on:
+     - postgres
+
+volumes:
+  postgres-data:
+  pgadmin-data:

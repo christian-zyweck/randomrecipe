@@ -1,0 +1,54 @@
+name: build and submit dependency graph
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+# cancel in progress builds
+# the concurrency group name will be constructed from the workflow name added by
+# - the pull request number, if the trigger is a pull request
+# - the branch/tag name, if the trigger is a push
+concurrency:
+  group: ${{ github.workflow }}-{{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+      - name: checkout sources
+        uses: actions/checkout@v4
+      - name: set up JDK 21 (temurin)
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+
+      - name: setup gradle
+        uses: gradle/actions/setup-gradle@v4
+
+      - name: Build with Gradle Wrapper
+        run: ./gradlew build
+
+  dependency-submission:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: checkout sources
+        uses: actions/checkout@v4
+
+      - name: set up JDK 21 (temurin)
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+
+      - name: generate and submit dependency graph
+        uses: gradle/actions/dependency-submission@v4

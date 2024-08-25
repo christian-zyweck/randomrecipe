@@ -10,9 +10,7 @@ done
 # login des kc admin
 /opt/keycloak/bin/kcadm.sh config credentials --server http://localhost:8080 --realm master --user admin --password admin
 
-REALM_EXISTS() {
- /opt/keycloak/bin/kcadm.sh get realms -q realm=$REALM_NAME | grep -q '"realm"'
-}
+REALM_EXISTS=$( /opt/keycloak/bin/kcadm.sh get realms/$REALM_NAME | grep -q "$REALM_NAME" && echo "true" || echo "false" )
 
 USER_EXISTS() {
   /opt/keycloak/bin/kcadm.sh get users -r $REALM_NAME -q username=$1 | grep -q '"id"'
@@ -26,10 +24,10 @@ USERS=(
 )
 
 # realm erstellen, wenn er noch nicht existiert
-if ! REALM_EXISTS; then
-  /opt/keycloak/bin/kcadm.sh create realms -s realm=$REALM_NAME -s enabled=true
+if [ "$REALM_EXISTS" = "true" ]; then
+  echo "Realm '$REALM_NAME' exists."
 else
-  echo "Realm '$REALM_NAME' already exists"
+  /opt/keycloak/bin/kcadm.sh create realms -s realm=$REALM_NAME -s enabled=true
 fi
 
 # user erstellen, wenn sie noch nicht existieren

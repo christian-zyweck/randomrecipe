@@ -1,3 +1,5 @@
+import org.gradle.kotlin.dsl.testImplementation
+
 plugins {
     kotlin("jvm") version libs.versions.kotlin.language
     kotlin("plugin.spring") version libs.versions.kotlin.language
@@ -34,7 +36,10 @@ dependencies {
 
     testImplementation(libs.spring.boot.starter.test)
     testImplementation(libs.spring.security.test)
+    testImplementation(libs.rest.assured.core)
+    testImplementation(libs.rest.assured.kotlin)
     testImplementation(libs.bundles.testing)
+    testImplementation(libs.bundles.testContainers)
     testRuntimeOnly(libs.junit.platform.launcher)
 
     developmentOnly(libs.spring.boot.docker.compose)

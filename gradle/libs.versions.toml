@@ -44,10 +44,29 @@ testcontainers-keycloak = { group = "com.github.dasniko", name = "testcontainers
 spring-boot-docker-compose = { group = "org.springframework.boot", name = "spring-boot-docker-compose" }
 
 [bundles]
+securedSpringBootWebApp = [
+    "spring-boot-starter-actuator",
+    "spring-boot-starter-oauth2-resourceserver",
+    "spring-boot-starter-security",
+    "spring-boot-starter-web",
+    "spring-boot-starter-data-jpa",
+    "jackson-module-kotlin",
+    "liquibase-core",
+    "kotlin-reflect",
+    "kotlin-logging",
+]
+
 testing = [
     "kotlin-test-junit5",
     "instancio",
-    "assertj"
+    "assertj",
+]
+
+springBootTesting = [
+    "spring-boot-starter-test",
+    "spring-security-test",
+    "rest-assured-core",
+    "rest-assured-kotlin",
 ]
 
 testContainers = [

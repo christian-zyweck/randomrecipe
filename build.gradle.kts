@@ -23,23 +23,15 @@ repositories {
 }
 
 dependencies {
-    implementation(libs.spring.boot.starter.actuator)
-    implementation(libs.spring.boot.starter.data.jpa)
-    implementation(libs.spring.boot.starter.oauth2.resourceserver)
-    implementation(libs.spring.boot.starter.security)
-    implementation(libs.spring.boot.starter.web)
-    implementation(libs.jackson.module.kotlin)
-    implementation(libs.kotlin.reflect)
-    implementation(libs.liquibase.core)
     implementation(project(":domain"))
+    implementation(libs.bundles.securedSpringBootWebApp)
+
     runtimeOnly(libs.postgres)
 
-    testImplementation(libs.spring.boot.starter.test)
-    testImplementation(libs.spring.security.test)
-    testImplementation(libs.rest.assured.core)
-    testImplementation(libs.rest.assured.kotlin)
     testImplementation(libs.bundles.testing)
+    testImplementation(libs.bundles.springBootTesting)
     testImplementation(libs.bundles.testContainers)
+
     testRuntimeOnly(libs.junit.platform.launcher)
 
     developmentOnly(libs.spring.boot.docker.compose)

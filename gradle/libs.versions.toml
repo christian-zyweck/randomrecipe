@@ -1,6 +1,6 @@
 [versions]
 kotlin-language = "1.9.25"
-spring-boot = "3.3.3"
+spring-boot = "3.3.5"
 spring-dependency-management = "1.1.6"
 ktlint = "12.1.1"
 kotlin-logging = "7.0.0"

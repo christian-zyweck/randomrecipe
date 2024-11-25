@@ -2,7 +2,7 @@
 kotlin-language = "1.9.25"
 spring-boot = "3.3.3"
 spring-dependency-management = "1.1.6"
-ktlint = "12.1.1"
+ktlint = "12.1.2"
 kotlin-logging = "7.0.0"
 assertj = "3.26.3"
 instancio = "5.0.1"
